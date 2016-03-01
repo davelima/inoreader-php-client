@@ -160,4 +160,18 @@ class Feed extends Client
         
         return $this->request($endpoint, $postData);
     }
+
+    /**
+     * Mark a single item as read
+     *
+     * @param string $id
+     *      Stream ID (tag:google.com,2005:reader/item/...)
+     * @return null
+     */
+    public function markAsRead($id)
+    {
+        $endpoint = 'edit-tag?a=user/-/state/com.google/read&i=' . $id;
+
+        return $this->request($endpoint);
+    }
 }
